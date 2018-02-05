@@ -49,4 +49,17 @@ public class Operation {
             e.printStackTrace();
         }
     }
+
+    public static void delete(int id){
+        String query = "DELETE FROM angielski where ID = ?";
+
+        try {
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query);
+            preparedStatement.setInt(1,id);
+            preparedStatement.execute();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
