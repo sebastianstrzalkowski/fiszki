@@ -36,7 +36,9 @@ cmake-build-debug/
 
 # IntelliJ
 /out/
-/src/pl/strzalkowskisebastian/datebase/Config.java
+src\pl\strzalkowskisebastian\datebase\Config.java
+
+.idea/vcs.xml
 # mpeltonen/sbt-idea plugin
 .idea_modules/
 
@@ -67,3 +69,6 @@ fabric.properties
 .idea/sonarlint
 
 # End of https://www.gitignore.io/api/intellij
+src/pl/strzalkowskisebastian/datebase/Config.java
+src/pl/strzalkowskisebastian/datebase/Config.java
+src/pl/strzalkowskisebastian/datebase/Config.java___jb_tmp___
