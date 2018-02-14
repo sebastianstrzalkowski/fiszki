@@ -8,15 +8,21 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.strzalkowskisebastian.controllers.FishCards">
    <children>
-      <TabPane layoutX="8.0" layoutY="14.0" prefHeight="381.0" prefWidth="589.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="-3.0" prefHeight="400.0" prefWidth="607.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Naucz się">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="learnWord" layoutX="28.0" layoutY="120.0" />
+                        <Text fx:id="textCommentary" layoutX="285.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tutaj pojawi się znaczenie" wrappingWidth="223.13671875" />
+                        <Text fx:id="textWord" layoutX="86.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Słowo" />
+                        <Button fx:id="buttonCheck" layoutX="72.0" layoutY="186.0" mnemonicParsing="false" onAction="#ButtonCheck" text="Sprawdz" />
+                     </children></AnchorPane>
             </content>
           </Tab>
           <Tab fx:id="AddTab" text="Dodaj">
@@ -36,11 +42,11 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="7.0" layoutY="6.0" prefHeight="217.0" prefWidth="576.0">
+                        <TableView layoutX="7.0" layoutY="6.0" prefHeight="217.0" prefWidth="604.0">
                            <columns>
                               <TableColumn prefWidth="75.0" text="ID" />
                               <TableColumn prefWidth="229.0" text="Słowo" />
-                              <TableColumn prefWidth="268.0" text="Znaczenie" />
+                              <TableColumn prefWidth="299.0" text="Znaczenie" />
                            </columns>
                         </TableView>
                         <Button layoutX="257.0" layoutY="258.0" mnemonicParsing="false" text="Usuń fiszkę" />
@@ -52,11 +58,11 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="7.0" layoutY="6.0" prefHeight="217.0" prefWidth="576.0">
+                        <TableView layoutX="7.0" layoutY="6.0" prefHeight="217.0" prefWidth="604.0">
                           <columns>
                             <TableColumn prefWidth="75.0" text="ID" />
                             <TableColumn prefWidth="229.0" text="Słowo" />
-                              <TableColumn prefWidth="268.0" text="Znaczenie" />
+                              <TableColumn prefWidth="298.0" text="Znaczenie" />
                           </columns>
                         </TableView>
                         <Button layoutX="243.0" layoutY="313.0" mnemonicParsing="false" text="Aktualizuj fiszkę" />

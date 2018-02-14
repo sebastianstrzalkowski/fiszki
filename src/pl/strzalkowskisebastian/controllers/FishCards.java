@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import pl.strzalkowskisebastian.datebase.Operation;
 
 import java.sql.SQLException;
@@ -12,6 +13,8 @@ public class FishCards {
     public Button AddButton;
     public TextField WordAddField;
     public TextField CommentaryAddField;
+    public TextField learnWord;
+    public Text textWord;
 
 
     public void AddButton(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
@@ -24,5 +27,8 @@ public class FishCards {
             e.printStackTrace();
         }
 
+    }
+
+    public void ButtonCheck(ActionEvent actionEvent) {
     }
 }
