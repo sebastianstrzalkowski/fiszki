@@ -30,7 +30,6 @@ public class FishCards implements Initializable {
     public TableColumn<ObservableList, FishCard> columnWord;
     public TableColumn<ObservableList, FishCard> columnID;
 
-    public ObservableList<FishCard> fiszki = FXCollections.observableArrayList(new FishCard("Hi", "Siema", 2));
 
 
     public void AddButton(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
@@ -51,7 +50,6 @@ public class FishCards implements Initializable {
     }
 
     public void updateButton(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-
     }
 
     public void deleteButton(ActionEvent actionEvent) {
