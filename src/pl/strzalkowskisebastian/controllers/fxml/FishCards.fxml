@@ -38,38 +38,23 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Usuń">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView layoutX="7.0" layoutY="6.0" prefHeight="217.0" prefWidth="604.0">
-                           <columns>
-                              <TableColumn prefWidth="75.0" text="ID" />
-                              <TableColumn prefWidth="229.0" text="Słowo" />
-                              <TableColumn prefWidth="299.0" text="Znaczenie" />
-                           </columns>
-                        </TableView>
-                        <Button layoutX="257.0" layoutY="258.0" mnemonicParsing="false" text="Usuń fiszkę" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
             <Tab text="Aktualizuj">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="7.0" layoutY="6.0" prefHeight="217.0" prefWidth="604.0">
+                        <TableView fx:id="tableFishCards" layoutX="7.0" layoutY="6.0" prefHeight="217.0" prefWidth="604.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="ID" />
-                            <TableColumn prefWidth="229.0" text="Słowo" />
-                              <TableColumn prefWidth="298.0" text="Znaczenie" />
+                            <TableColumn fx:id="columnID" prefWidth="75.0" text="ID" />
+                            <TableColumn fx:id="columnWord" prefWidth="229.0" text="Słowo" />
+                              <TableColumn fx:id="columnCommentary" prefWidth="298.0" text="Znaczenie" />
                           </columns>
                         </TableView>
-                        <Button layoutX="243.0" layoutY="313.0" mnemonicParsing="false" text="Aktualizuj fiszkę" />
+                        <Button fx:id="updateButton" layoutX="114.0" layoutY="313.0" mnemonicParsing="false" onAction="#updateButton" text="Aktualizuj fiszkę" />
                         <TextField layoutX="87.0" layoutY="275.0" />
                         <TextField layoutX="347.0" layoutY="275.0" />
                         <Label layoutX="148.0" layoutY="258.0" text="Słowo" />
                         <Label layoutX="395.0" layoutY="258.0" text="Znaczenie" />
+                        <Button fx:id="deleteButton" layoutX="360.0" layoutY="313.0" mnemonicParsing="false" onAction="#deleteButton" text="Usuń wybraną fiszkę" />
                      </children>
                   </AnchorPane>
                </content>

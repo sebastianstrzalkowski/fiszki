@@ -1,5 +1,8 @@
 package pl.strzalkowskisebastian.datebase;
 
+import pl.strzalkowskisebastian.models.FishCard;
+import pl.strzalkowskisebastian.lists.FishCardList;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,7 +23,8 @@ public class Operation {
         ResultSet resultSet = preparedStatement.executeQuery();
 
         while(resultSet.next()){
-            System.out.println("ID: " + resultSet.getString("ID")+ " słowo: " + resultSet.getString("slowo") + " znaczenie: " + resultSet.getString("komentarz"));
+            FishCard fishCard = new FishCard(resultSet.getString("slowo"),resultSet.getString("komentarz"),resultSet.getInt("ID"));
+            FishCardList.addToList(fishCard);
         }
     }
 
