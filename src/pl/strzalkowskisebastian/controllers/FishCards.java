@@ -31,6 +31,7 @@ public class FishCards implements Initializable {
     public TableColumn<ObservableList, FishCard> columnWord;
     public TableColumn<ObservableList, FishCard> columnID;
     public Text textCommentary;
+    public Button buttonCheck;
     Random generator = new Random();
     public FishCard fishCardLearn = new FishCard();
 
@@ -38,7 +39,6 @@ public class FishCards implements Initializable {
 
     public void AddButton(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         try {
-            //Operation.write(WordAddField.getText(),CommentaryAddField.getText());
             Operation.read();
             FishCardList.showList(FishCardList.getFishCardsList());
 
@@ -51,7 +51,13 @@ public class FishCards implements Initializable {
     }
 
     public void ButtonCheck(ActionEvent actionEvent) {
-
+        String word = learnWord.getText();
+        if(word.equals(fishCardLearn.getWord())){
+            buttonCheck.setText("Dobrze");
+        }
+        else{
+            buttonCheck.setText("Źle, popraw");
+        }
     }
 
     public void updateButton(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
@@ -84,5 +90,6 @@ public class FishCards implements Initializable {
         int index = generator.nextInt(FishCardList.size());
         fishCardLearn = FishCardList.getElement(index);
         textCommentary.setText(fishCardLearn.getCommentary());
+        buttonCheck.setText("Sprawdź");
     }
 }
