@@ -34,6 +34,7 @@ public class FishCards implements Initializable {
     public Button buttonCheck;
     Random generator = new Random();
     public FishCard fishCardLearn = new FishCard();
+    Boolean checkStatus;
 
 
 
@@ -54,9 +55,12 @@ public class FishCards implements Initializable {
         String word = learnWord.getText();
         if(word.equals(fishCardLearn.getWord())){
             buttonCheck.setText("Dobrze");
+            checkStatus = true;
+
         }
         else{
             buttonCheck.setText("Źle, popraw");
+            checkStatus = false;
         }
     }
 
@@ -84,6 +88,12 @@ public class FishCards implements Initializable {
     }
 
     public void canButton(ActionEvent actionEvent) {
+        if(checkStatus == true) {
+            fishCardLearn.setCan(true);
+        }
+        else{
+            fishCardLearn.setCan(false);
+        }
     }
 
     public void nextButton(ActionEvent actionEvent) {

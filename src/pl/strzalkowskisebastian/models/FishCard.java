@@ -4,13 +4,24 @@ public class FishCard {
     String word;
     String commentary;
     int index;
+    Boolean can;
 
     public FishCard(){};
+
+    public Boolean getCan() {
+        return can;
+    }
+
+    public void setCan(Boolean can) {
+
+        this.can = can;
+    }
 
     public FishCard(String word, String commentary, int index){
         this.word = word;
         this.commentary = commentary;
         this.index = index;
+
     }
 
     public String getWord() {

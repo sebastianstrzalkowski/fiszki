@@ -32,4 +32,5 @@ public class FishCardList {
     public static FishCard getElement(int index){
         return fishCardsList.get(index);
     }
+
 }
