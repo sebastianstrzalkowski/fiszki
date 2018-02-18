@@ -5,6 +5,8 @@ public class FishCard {
     String commentary;
     int index;
 
+    public FishCard(){};
+
     public FishCard(String word, String commentary, int index){
         this.word = word;
         this.commentary = commentary;

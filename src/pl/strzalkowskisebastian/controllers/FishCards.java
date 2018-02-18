@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class FishCards implements Initializable {
@@ -29,6 +30,9 @@ public class FishCards implements Initializable {
     public TableColumn<ObservableList, FishCard> columnCommentary;
     public TableColumn<ObservableList, FishCard> columnWord;
     public TableColumn<ObservableList, FishCard> columnID;
+    public Text textCommentary;
+    Random generator = new Random();
+    public FishCard fishCardLearn = new FishCard();
 
 
 
@@ -47,6 +51,7 @@ public class FishCards implements Initializable {
     }
 
     public void ButtonCheck(ActionEvent actionEvent) {
+
     }
 
     public void updateButton(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
@@ -72,4 +77,12 @@ public class FishCards implements Initializable {
 
     }
 
+    public void canButton(ActionEvent actionEvent) {
+    }
+
+    public void nextButton(ActionEvent actionEvent) {
+        int index = generator.nextInt(FishCardList.size());
+        fishCardLearn = FishCardList.getElement(index);
+        textCommentary.setText(fishCardLearn.getCommentary());
+    }
 }

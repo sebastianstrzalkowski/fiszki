@@ -25,4 +25,11 @@ public class FishCardList {
             System.out.println(x.toString());
         }
     }
+    public static int size(){
+        return fishCardsList.size();
+    }
+
+    public static FishCard getElement(int index){
+        return fishCardsList.get(index);
+    }
 }
