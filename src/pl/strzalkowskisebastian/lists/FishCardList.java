@@ -10,7 +10,6 @@ public class FishCardList {
     public static ObservableList<FishCard> fishCardsList =
             FXCollections.observableArrayList();
 
-    public FishCardList(){};
 
     public static ObservableList<FishCard> getFishCardsList() {
         return fishCardsList;
@@ -32,5 +31,6 @@ public class FishCardList {
     public static FishCard getElement(int index){
         return fishCardsList.get(index);
     }
+
 
 }

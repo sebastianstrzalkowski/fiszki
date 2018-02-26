@@ -15,6 +15,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Random;
@@ -32,9 +33,9 @@ public class FishCards implements Initializable {
     public TableColumn<ObservableList, FishCard> columnID;
     public Text textCommentary;
     public Button buttonCheck;
-    Random generator = new Random();
+    private Random generator = new Random();
     public FishCard fishCardLearn = new FishCard();
-    Boolean checkStatus;
+    private Boolean checkStatus;
 
 
 
@@ -67,7 +68,9 @@ public class FishCards implements Initializable {
     public void updateButton(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
     }
 
-    public void deleteButton(ActionEvent actionEvent) {
+    public void deleteButton(ActionEvent actionEvent) throws FileNotFoundException {
+        pl.strzalkowskisebastian.files_control.Operation.write();
+        //pl.strzalkowskisebastian.files_control.Operation.read();
     }
 
     public void initialize(URL location, ResourceBundle resources) {
