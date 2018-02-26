@@ -6,15 +6,16 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.strzalkowskisebastian.controllers.FishCards">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.strzalkowskisebastian.controllers.FishCards">
    <children>
       <TabPane layoutX="-3.0" prefHeight="400.0" prefWidth="607.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Naucz się">
+          <Tab fx:id="checkTab" text="Sprawdz się">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -27,7 +28,19 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-          <Tab fx:id="AddTab" text="Dodaj">
+            <Tab fx:id="learnTab" text="Naucz się">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="nextButtonLearn" layoutX="44.0" layoutY="186.0" mnemonicParsing="false" onAction="#nextButton" text="Następna" />
+                        <Button fx:id="canButtonLearn" layoutX="164.0" layoutY="186.0" mnemonicParsing="false" onAction="#canButton" text="Umiem" />
+                        <TextArea fx:id="commentaryArea" layoutX="332.0" layoutY="92.0" prefHeight="88.0" prefWidth="200.0" promptText="Tutaj pojawi się znaczenie" />
+                        <TextField fx:id="wordField" layoutX="58.0" layoutY="116.0" promptText="Tutaj pojawi się słowo" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+          <Tab fx:id="addTab" text="Dodaj">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -40,7 +53,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Aktualizuj">
+            <Tab fx:id="updateTab" text="Aktualizuj">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>

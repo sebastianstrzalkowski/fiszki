@@ -4,15 +4,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import pl.strzalkowskisebastian.datebase.Operation;
 import pl.strzalkowskisebastian.lists.FishCardList;
 import pl.strzalkowskisebastian.models.FishCard;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 
 
 import java.io.FileNotFoundException;
@@ -33,6 +30,10 @@ public class FishCards implements Initializable {
     public TableColumn<ObservableList, FishCard> columnID;
     public Text textCommentary;
     public Button buttonCheck;
+    public TextArea commentaryArea;
+    public TextField wordField;
+    public Tab learnTab;
+    public Tab checkTab;
     private Random generator = new Random();
     public FishCard fishCardLearn = new FishCard();
     private Boolean checkStatus;
@@ -40,7 +41,11 @@ public class FishCards implements Initializable {
 
 
     public void AddButton(ActionEvent actionEvent) {
-
+        String word = WordAddField.getText();
+        String commentary = CommentaryAddField.getText();
+        int index = FishCardList.size()+1;
+        FishCard fishCard = new FishCard(word,commentary,index);
+        FishCardList.addToList(fishCard);
 
     }
 
@@ -91,7 +96,12 @@ public class FishCards implements Initializable {
     public void nextButton(ActionEvent actionEvent) {
         int index = generator.nextInt(FishCardList.size());
         fishCardLearn = FishCardList.getElement(index);
-        textCommentary.setText(fishCardLearn.getCommentary());
+        if(learnTab.isSelected()){
+            commentaryArea.setText(fishCardLearn.getCommentary());
+            wordField.setText(fishCardLearn.getWord());
+        }else if(checkTab.isSelected()) {
+            textCommentary.setText(fishCardLearn.getCommentary());
+        }
         buttonCheck.setText("Sprawdź");
     }
 }
