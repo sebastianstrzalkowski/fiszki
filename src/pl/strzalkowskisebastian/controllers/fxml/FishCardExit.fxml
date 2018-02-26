@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="127.0" prefWidth="357.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.strzalkowskisebastian.controllers.FishCardExit">
+   <children>
+      <Text layoutX="128.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zapisać zmiany?" />
+      <Button fx:id="yes" layoutX="55.0" layoutY="64.0" mnemonicParsing="false" onAction="#yes" prefHeight="26.0" prefWidth="75.0" text="Tak" />
+      <ButtonBar layoutX="117.0" layoutY="57.0" prefHeight="40.0" prefWidth="200.0">
+         <buttons>
+            <Button fx:id="no" mnemonicParsing="false" onAction="#no" text="Nie" />
+         </buttons>
+      </ButtonBar>
+   </children>
+</AnchorPane>

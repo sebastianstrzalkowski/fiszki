@@ -1,11 +1,15 @@
 package pl.strzalkowskisebastian;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import pl.strzalkowskisebastian.controllers.FishCardExit;
 import pl.strzalkowskisebastian.datebase.Operation;
+import pl.strzalkowskisebastian.models.FishCard;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -23,16 +27,22 @@ public class Main extends Application {
         stage.setTitle("Fiszki");
         stage.setScene(myScene);
         stage.show();
+
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent we) {
+                FishCardExit fishCardExit = new FishCardExit();
+                Stage stageExit = new Stage();
+                try {
+                    fishCardExit.start(stageExit);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+    public static void main(String[] args){
         launch(args);
     }
-    public void stop(){
-        try {
-            pl.strzalkowskisebastian.files_control.Operation.write();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
+
 }

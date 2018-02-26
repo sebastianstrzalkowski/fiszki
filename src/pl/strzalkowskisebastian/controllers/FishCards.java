@@ -104,4 +104,6 @@ public class FishCards implements Initializable {
         }
         buttonCheck.setText("Sprawdź");
     }
+
+
 }
