@@ -39,16 +39,8 @@ public class FishCards implements Initializable {
 
 
 
-    public void AddButton(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        try {
-            Operation.read();
-            FishCardList.showList(FishCardList.getFishCardsList());
+    public void AddButton(ActionEvent actionEvent) {
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
 
     }
 
@@ -65,24 +57,21 @@ public class FishCards implements Initializable {
         }
     }
 
-    public void updateButton(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    public void updateButton(ActionEvent actionEvent) {
     }
 
-    public void deleteButton(ActionEvent actionEvent) throws FileNotFoundException {
-        pl.strzalkowskisebastian.files_control.Operation.write();
-        //pl.strzalkowskisebastian.files_control.Operation.read();
+    public void deleteButton(ActionEvent actionEvent) {
+
     }
 
     public void initialize(URL location, ResourceBundle resources) {
 
         try {
-            Operation.read();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+            pl.strzalkowskisebastian.files_control.Operation.read();
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-            columnWord.setCellValueFactory(new PropertyValueFactory("word"));
+        columnWord.setCellValueFactory(new PropertyValueFactory("word"));
             columnCommentary.setCellValueFactory(new PropertyValueFactory("commentary"));
             columnID.setCellValueFactory(new PropertyValueFactory("index"));
             tableFishCards.setItems(FishCardList.getFishCardsList());

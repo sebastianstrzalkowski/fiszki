@@ -15,10 +15,11 @@ public class Operation {
         File file = new File("fiszki.txt");
         Scanner in = new Scanner(file);
         String text;
-        String word = new String("");
-        String commentary = new String("");
+
         int index = FishCardList.size()+1;
         do {
+            String word = new String("");
+            String commentary = new String("");
             Boolean meaning = false;
             text = in.nextLine();
             char[] array = text.toCharArray();
