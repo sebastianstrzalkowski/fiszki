@@ -7,6 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import pl.strzalkowskisebastian.datebase.Operation;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -26,5 +27,12 @@ public class Main extends Application {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         launch(args);
+    }
+    public void stop(){
+        try {
+            pl.strzalkowskisebastian.files_control.Operation.write();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
