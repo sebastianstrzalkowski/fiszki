@@ -65,8 +65,8 @@
                           </columns>
                         </TableView>
                         <Button fx:id="updateButton" layoutX="114.0" layoutY="313.0" mnemonicParsing="false" onAction="#updateButton" text="Aktualizuj fiszkę" />
-                        <TextField layoutX="87.0" layoutY="275.0" />
-                        <TextField layoutX="347.0" layoutY="275.0" />
+                        <TextField fx:id="wordUpdate" layoutX="87.0" layoutY="275.0" />
+                        <TextField fx:id="commentaryUpdate" layoutX="347.0" layoutY="275.0" />
                         <Label layoutX="148.0" layoutY="258.0" text="Słowo" />
                         <Label layoutX="395.0" layoutY="258.0" text="Znaczenie" />
                         <Button fx:id="deleteButton" layoutX="360.0" layoutY="313.0" mnemonicParsing="false" onAction="#deleteButton" text="Usuń wybraną fiszkę" />

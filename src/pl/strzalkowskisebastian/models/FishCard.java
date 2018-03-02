@@ -35,4 +35,12 @@ public class FishCard {
     public int getIndex() {
         return index;
     }
+
+    public void setWord(String word) {
+        this.word = word;
+    }
+
+    public void setCommentary(String commentary) {
+        this.commentary = commentary;
+    }
 }

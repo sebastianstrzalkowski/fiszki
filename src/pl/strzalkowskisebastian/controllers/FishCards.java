@@ -34,6 +34,8 @@ public class FishCards implements Initializable {
     public TextField wordField;
     public Tab learnTab;
     public Tab checkTab;
+    public TextField commentaryUpdate;
+    public TextField wordUpdate;
     private Random generator = new Random();
     public FishCard fishCardLearn = new FishCard();
     private Boolean checkStatus;
@@ -63,10 +65,26 @@ public class FishCards implements Initializable {
     }
 
     public void updateButton(ActionEvent actionEvent) {
+        if(tableFishCards.getSelectionModel().isEmpty()) {}
+
+        else {
+            FishCard fishCard = (FishCard) tableFishCards.getSelectionModel().getSelectedItem();
+            if (wordUpdate.getLength() > 0) {
+                fishCard.setWord(wordUpdate.getText());
+            }
+            if (commentaryUpdate.getLength() > 0) {
+                fishCard.setCommentary(commentaryUpdate.getText());
+            }
+            tableFishCards.refresh();
+        }
     }
 
     public void deleteButton(ActionEvent actionEvent) {
+            if(tableFishCards.getSelectionModel().isEmpty()){}
+            else{
+                tableFishCards.getItems().removeAll(tableFishCards.getSelectionModel().getSelectedItem());
 
+            }
     }
 
     public void initialize(URL location, ResourceBundle resources) {
