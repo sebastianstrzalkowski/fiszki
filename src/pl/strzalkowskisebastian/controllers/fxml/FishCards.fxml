@@ -59,7 +59,7 @@
                      <children>
                         <TableView fx:id="tableFishCards" layoutX="7.0" layoutY="6.0" prefHeight="217.0" prefWidth="604.0">
                           <columns>
-                            <TableColumn fx:id="columnID" prefWidth="75.0" text="ID" />
+                            <TableColumn fx:id="columnCan" prefWidth="75.0" text="Umiem" />
                             <TableColumn fx:id="columnWord" prefWidth="229.0" text="Słowo" />
                               <TableColumn fx:id="columnCommentary" prefWidth="298.0" text="Znaczenie" />
                           </columns>

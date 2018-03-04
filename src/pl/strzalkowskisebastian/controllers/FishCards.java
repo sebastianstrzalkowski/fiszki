@@ -27,7 +27,7 @@ public class FishCards implements Initializable {
     public TableView<FishCard> tableFishCards;
     public TableColumn<ObservableList, FishCard> columnCommentary;
     public TableColumn<ObservableList, FishCard> columnWord;
-    public TableColumn<ObservableList, FishCard> columnID;
+    public TableColumn<ObservableList, FishCard> columnCan;
     public Text textCommentary;
     public Button buttonCheck;
     public TextArea commentaryArea;
@@ -38,36 +38,33 @@ public class FishCards implements Initializable {
     public TextField wordUpdate;
     private Random generator = new Random();
     public FishCard fishCardLearn = new FishCard();
-    private Boolean checkStatus;
-
+    private Boolean checkStatus = false;
 
 
     public void AddButton(ActionEvent actionEvent) {
         String word = WordAddField.getText();
         String commentary = CommentaryAddField.getText();
-        int index = FishCardList.size()+1;
-        FishCard fishCard = new FishCard(word,commentary,index);
+        int index = FishCardList.size() + 1;
+        FishCard fishCard = new FishCard(word, commentary, index);
         FishCardList.addToList(fishCard);
 
     }
 
     public void ButtonCheck(ActionEvent actionEvent) {
         String word = learnWord.getText();
-        if(word.equals(fishCardLearn.getWord())){
+        if (word.equals(fishCardLearn.getWord())) {
             buttonCheck.setText("Dobrze");
             checkStatus = true;
 
-        }
-        else{
+        } else {
             buttonCheck.setText("Źle, popraw");
             checkStatus = false;
         }
     }
 
     public void updateButton(ActionEvent actionEvent) {
-        if(tableFishCards.getSelectionModel().isEmpty()) {}
-
-        else {
+        if (tableFishCards.getSelectionModel().isEmpty()) {
+        } else {
             FishCard fishCard = (FishCard) tableFishCards.getSelectionModel().getSelectedItem();
             if (wordUpdate.getLength() > 0) {
                 fishCard.setWord(wordUpdate.getText());
@@ -80,11 +77,11 @@ public class FishCards implements Initializable {
     }
 
     public void deleteButton(ActionEvent actionEvent) {
-            if(tableFishCards.getSelectionModel().isEmpty()){}
-            else{
-                tableFishCards.getItems().removeAll(tableFishCards.getSelectionModel().getSelectedItem());
+        if (tableFishCards.getSelectionModel().isEmpty()) {
+        } else {
+            tableFishCards.getItems().removeAll(tableFishCards.getSelectionModel().getSelectedItem());
 
-            }
+        }
     }
 
     public void initialize(URL location, ResourceBundle resources) {
@@ -95,32 +92,43 @@ public class FishCards implements Initializable {
             e.printStackTrace();
         }
         columnWord.setCellValueFactory(new PropertyValueFactory("word"));
-            columnCommentary.setCellValueFactory(new PropertyValueFactory("commentary"));
-            columnID.setCellValueFactory(new PropertyValueFactory("index"));
-            tableFishCards.setItems(FishCardList.getFishCardsList());
+        columnCommentary.setCellValueFactory(new PropertyValueFactory("commentary"));
+        columnCan.setCellValueFactory(new PropertyValueFactory("can"));
+        tableFishCards.setItems(FishCardList.getFishCardsList());
 
 
     }
 
     public void canButton(ActionEvent actionEvent) {
-        if(checkStatus == true) {
+        System.out.println(fishCardLearn.toString());
+        if (checkStatus) {
             fishCardLearn.setCan(true);
+            tableFishCards.refresh();
         }
-        else{
-            fishCardLearn.setCan(false);
-        }
+
+
     }
 
     public void nextButton(ActionEvent actionEvent) {
-        int index = generator.nextInt(FishCardList.size());
-        fishCardLearn = FishCardList.getElement(index);
-        if(learnTab.isSelected()){
-            commentaryArea.setText(fishCardLearn.getCommentary());
-            wordField.setText(fishCardLearn.getWord());
-        }else if(checkTab.isSelected()) {
-            textCommentary.setText(fishCardLearn.getCommentary());
+        int numberOfFalse = FishCardList.getNumbersOfFalse();
+        System.out.println(numberOfFalse);
+        if (numberOfFalse > 0) {
+            int index = generator.nextInt(FishCardList.size());
+            fishCardLearn = FishCardList.getElement(index);
+            while (fishCardLearn.getCan() == true) {
+                index = generator.nextInt(FishCardList.size());
+                fishCardLearn = FishCardList.getElement(index);
+            }
+            if (learnTab.isSelected()) {
+                commentaryArea.setText(fishCardLearn.getCommentary());
+                wordField.setText(fishCardLearn.getWord());
+            } else if (checkTab.isSelected()) {
+                textCommentary.setText(fishCardLearn.getCommentary());
+            }
+            buttonCheck.setText("Sprawdź");
+        } else {
+            textCommentary.setText("Gratuluje, umiesz już wszystkie słowa");
         }
-        buttonCheck.setText("Sprawdź");
     }
 
 

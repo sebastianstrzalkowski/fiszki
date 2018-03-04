@@ -32,5 +32,14 @@ public class FishCardList {
         return fishCardsList.get(index);
     }
 
+    public static int getNumbersOfFalse(){
+        int numbersOfFalse = 0;
 
+        for (FishCard fishCard : fishCardsList) {
+            if(!fishCard.getCan()){
+                numbersOfFalse++;
+            }
+        }
+        return numbersOfFalse;
+    }
 }

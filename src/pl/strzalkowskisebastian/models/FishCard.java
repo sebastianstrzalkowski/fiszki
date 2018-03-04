@@ -21,6 +21,14 @@ public class FishCard {
         this.word = word;
         this.commentary = commentary;
         this.index = index;
+        this.can = false;
+
+    }
+    public FishCard(String word, String commentary, int index, Boolean can){
+        this.word = word;
+        this.commentary = commentary;
+        this.index = index;
+        this.can = can;
 
     }
 
@@ -34,6 +42,18 @@ public class FishCard {
 
     public int getIndex() {
         return index;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "FishCard{" +
+                "word='" + word + '\'' +
+                ", commentary='" + commentary + '\'' +
+                ", index=" + index +
+                ", can=" + can +
+                '}';
     }
 
     public void setWord(String word) {

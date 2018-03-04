@@ -20,22 +20,32 @@ public class Operation {
         do {
             String word = new String("");
             String commentary = new String("");
+            String can = new String("");
             Boolean meaning = false;
+            Boolean canCheck = false;
             text = in.nextLine();
             char[] array = text.toCharArray();
             for (char anArray : array) {
 
-                if (anArray == ';') meaning = true;
+                if (anArray == ';') {
+                    meaning = true;
+                }else if (anArray == ':') {
+                    canCheck = true;
+                    meaning = false;
+                }
                 else {
                     if (meaning) {
                         commentary += anArray;
-                    } else {
+                    } else if(canCheck) {
+                        can += anArray;
+                    }else {
                         word += anArray;
                     }
                 }
             }
 
-            FishCard fishCard = new FishCard(word,commentary,index);
+            canCheck = Boolean.parseBoolean(can);
+            FishCard fishCard = new FishCard(word,commentary,index,canCheck );
             FishCardList.addToList(fishCard);
             index++;
 
@@ -51,7 +61,7 @@ public class Operation {
 
         for(int i = 0; i < FishCardList.size(); i++){
             FishCard fishCard = FishCardList.getElement(i);
-            file.println(fishCard.getWord() + ";" + fishCard.getCommentary());
+            file.println(fishCard.getWord() + ";" + fishCard.getCommentary() + ":" + fishCard.getCan());
         }
 
 
