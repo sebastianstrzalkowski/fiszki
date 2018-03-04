@@ -1,20 +1,19 @@
 package pl.strzalkowskisebastian.controllers;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.text.Text;
-import pl.strzalkowskisebastian.datebase.Operation;
 import pl.strzalkowskisebastian.lists.FishCardList;
 import pl.strzalkowskisebastian.models.FishCard;
 
 
+import javax.security.auth.callback.Callback;
 import java.io.FileNotFoundException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -27,7 +26,7 @@ public class FishCards implements Initializable {
     public TableView<FishCard> tableFishCards;
     public TableColumn<ObservableList, FishCard> columnCommentary;
     public TableColumn<ObservableList, FishCard> columnWord;
-    public TableColumn<ObservableList, FishCard> columnCan;
+    public TableColumn<FishCard, Boolean> columnCan;
     public Text textCommentary;
     public Button buttonCheck;
     public TextArea commentaryArea;
@@ -39,7 +38,7 @@ public class FishCards implements Initializable {
     private Random generator = new Random();
     public FishCard fishCardLearn = new FishCard();
     private Boolean checkStatus = false;
-
+    public ComboBox canBox;
 
     public void AddButton(ActionEvent actionEvent) {
         String word = WordAddField.getText();
@@ -72,6 +71,13 @@ public class FishCards implements Initializable {
             if (commentaryUpdate.getLength() > 0) {
                 fishCard.setCommentary(commentaryUpdate.getText());
             }
+            if(!canBox.getSelectionModel().isEmpty()){
+                if(canBox.getSelectionModel().getSelectedItem().equals("Tak")){
+                    fishCard.setCan(true);
+                }else if(canBox.getSelectionModel().getSelectedItem().equals("Nie")){
+                    fishCard.setCan(false);
+                }
+            }
             tableFishCards.refresh();
         }
     }
@@ -94,7 +100,22 @@ public class FishCards implements Initializable {
         columnWord.setCellValueFactory(new PropertyValueFactory("word"));
         columnCommentary.setCellValueFactory(new PropertyValueFactory("commentary"));
         columnCan.setCellValueFactory(new PropertyValueFactory("can"));
+
+        columnCan.setCellFactory(tc -> new TableCell<FishCard, Boolean>() {
+
+            @Override
+            protected void updateItem(Boolean item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty ? null : item ? "Tak" : "Nie" );
+            }
+        });
+
+
         tableFishCards.setItems(FishCardList.getFishCardsList());
+
+        canBox.getItems().addAll(
+                "Tak", "Nie"
+        );
 
 
     }

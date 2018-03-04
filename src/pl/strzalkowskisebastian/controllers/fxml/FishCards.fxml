@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -11,9 +12,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.strzalkowskisebastian.controllers.FishCards">
+<AnchorPane xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.strzalkowskisebastian.controllers.FishCards">
    <children>
-      <TabPane layoutX="-3.0" prefHeight="400.0" prefWidth="607.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="-3.0" prefHeight="400.0" prefWidth="618.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab fx:id="checkTab" text="Sprawdz się">
             <content>
@@ -64,12 +65,14 @@
                               <TableColumn fx:id="columnCommentary" prefWidth="298.0" text="Znaczenie" />
                           </columns>
                         </TableView>
-                        <Button fx:id="updateButton" layoutX="114.0" layoutY="313.0" mnemonicParsing="false" onAction="#updateButton" text="Aktualizuj fiszkę" />
-                        <TextField fx:id="wordUpdate" layoutX="87.0" layoutY="275.0" />
-                        <TextField fx:id="commentaryUpdate" layoutX="347.0" layoutY="275.0" />
-                        <Label layoutX="148.0" layoutY="258.0" text="Słowo" />
-                        <Label layoutX="395.0" layoutY="258.0" text="Znaczenie" />
-                        <Button fx:id="deleteButton" layoutX="360.0" layoutY="313.0" mnemonicParsing="false" onAction="#deleteButton" text="Usuń wybraną fiszkę" />
+                        <Button fx:id="updateButton" layoutX="247.0" layoutY="295.0" mnemonicParsing="false" onAction="#updateButton" text="Aktualizuj fiszkę" />
+                        <TextField fx:id="wordUpdate" layoutX="29.0" layoutY="262.0" />
+                        <TextField fx:id="commentaryUpdate" layoutX="219.0" layoutY="262.0" />
+                        <Label layoutX="95.0" layoutY="242.0" text="Słowo" />
+                        <Label layoutX="270.0" layoutY="242.0" text="Znaczenie" />
+                        <Button fx:id="deleteButton" layoutX="233.0" layoutY="327.0" mnemonicParsing="false" onAction="#deleteButton" text="Usuń wybraną fiszkę" />
+                        <Text layoutX="476.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Umiem" />
+                        <ComboBox fx:id="canBox" layoutX="424.0" layoutY="262.0" prefWidth="150.0" />
                      </children>
                   </AnchorPane>
                </content>
