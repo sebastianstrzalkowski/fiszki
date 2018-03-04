@@ -1,31 +1,28 @@
 package pl.strzalkowskisebastian.controllers;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.text.Text;
 import pl.strzalkowskisebastian.lists.FishCardList;
 import pl.strzalkowskisebastian.models.FishCard;
 
 
-import javax.security.auth.callback.Callback;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 
 public class FishCards implements Initializable {
-    public Button AddButton;
-    public TextField WordAddField;
-    public TextField CommentaryAddField;
+    public Button addButton;
+    public TextField wordAddField;
+    public TextField commentaryAddField;
     public TextField learnWord;
     public Text textWord;
     public TableView<FishCard> tableFishCards;
-    public TableColumn<ObservableList, FishCard> columnCommentary;
-    public TableColumn<ObservableList, FishCard> columnWord;
+    public TableColumn<FishCard, String> columnCommentary;
+    public TableColumn<FishCard, String> columnWord;
     public TableColumn<FishCard, Boolean> columnCan;
     public Text textCommentary;
     public Button buttonCheck;
@@ -35,21 +32,23 @@ public class FishCards implements Initializable {
     public Tab checkTab;
     public TextField commentaryUpdate;
     public TextField wordUpdate;
+    public CheckBox wordsCheckBoxCheckYourself;
+    public CheckBox wordsCheckBoxLearn;
     private Random generator = new Random();
     public FishCard fishCardLearn = new FishCard();
     private Boolean checkStatus = false;
     public ComboBox canBox;
 
-    public void AddButton(ActionEvent actionEvent) {
-        String word = WordAddField.getText();
-        String commentary = CommentaryAddField.getText();
+    public void addButton(ActionEvent actionEvent) {
+        String word = wordAddField.getText();
+        String commentary = commentaryAddField.getText();
         int index = FishCardList.size() + 1;
         FishCard fishCard = new FishCard(word, commentary, index);
         FishCardList.addToList(fishCard);
 
     }
 
-    public void ButtonCheck(ActionEvent actionEvent) {
+    public void buttonCheck(ActionEvent actionEvent) {
         String word = learnWord.getText();
         if (word.equals(fishCardLearn.getWord())) {
             buttonCheck.setText("Dobrze");
@@ -132,8 +131,16 @@ public class FishCards implements Initializable {
 
     public void nextButton(ActionEvent actionEvent) {
         int numberOfFalse = FishCardList.getNumbersOfFalse();
-        System.out.println(numberOfFalse);
-        if (numberOfFalse > 0) {
+        Boolean checkAllWords = true;
+        if(wordsCheckBoxCheckYourself.isSelected() == false && checkTab.isSelected() == true){
+            checkAllWords = false;
+        }
+        if(wordsCheckBoxLearn.isSelected() == false && learnTab.isSelected() == true){
+            checkAllWords = false;
+        }
+
+
+        if (numberOfFalse > 0 && checkAllWords == false) {
             int index = generator.nextInt(FishCardList.size());
             fishCardLearn = FishCardList.getElement(index);
             while (fishCardLearn.getCan() == true) {
@@ -147,8 +154,18 @@ public class FishCards implements Initializable {
                 textCommentary.setText(fishCardLearn.getCommentary());
             }
             buttonCheck.setText("Sprawdź");
-        } else {
+        } else if(numberOfFalse == 0 && checkAllWords == false) {
             textCommentary.setText("Gratuluje, umiesz już wszystkie słowa");
+            commentaryArea.setText("Gratuluje, umiesz już wszystkie słowa");
+        }else{
+            int index = generator.nextInt(FishCardList.size());
+            fishCardLearn = FishCardList.getElement(index);
+            if (learnTab.isSelected()) {
+                commentaryArea.setText(fishCardLearn.getCommentary());
+                wordField.setText(fishCardLearn.getWord());
+            } else if (checkTab.isSelected()) {
+                textCommentary.setText(fishCardLearn.getCommentary());
+            }
         }
     }
 
